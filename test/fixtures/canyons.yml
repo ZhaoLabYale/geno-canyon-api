@@ -1,0 +1,11 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  chrom: 1
+  loc: 1
+  value: 9.99
+
+two:
+  chrom: 1
+  loc: 1
+  value: 9.99
