@@ -2,7 +2,7 @@ namespace :test do
   desc "Import File Into DB"
   task :import_file, [:filepath] => :environment do |t, args|
     file_path = args.filepath ? args.filepath : "test.data"
-    pp nline = `wc -l #{file_path}`.match(/^\d*/)[0].to_i
+    nline = `wc -l #{file_path}`.match(/^\d*/)[0].to_i
     bar = ProgressBar.create format: "%a %e %P% Processed: %c from %C", 
                              total: nline
     batch = Array.new
@@ -21,6 +21,7 @@ namespace :test do
     if !batch.empty?
       Canyon.import batch
     end
+    bar.finish
   end
 
   desc "Write a Random Big Data File"
