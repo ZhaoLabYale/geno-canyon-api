@@ -11,15 +11,15 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150306005240) do
+ActiveRecord::Schema.define(version: 20150306034604) do
 
-  create_table "canyons", force: :cascade do |t|
+  create_table "genomes", force: :cascade do |t|
     t.integer "chrom", limit: 1
     t.integer "loc",   limit: 8
     t.decimal "value",           precision: 65, scale: 30
   end
 
-  add_index "canyons", ["chrom"], name: "index_canyons_on_chrom", using: :btree
-  add_index "canyons", ["loc"], name: "index_canyons_on_loc", using: :btree
+  add_index "genomes", ["chrom"], name: "index_genomes_on_chrom", using: :btree
+  add_index "genomes", ["loc"], name: "index_genomes_on_loc", using: :btree
 
 end

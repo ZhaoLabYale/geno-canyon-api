@@ -11,15 +11,15 @@ namespace :data do
       chr = data[0].to_i
       loc = data[1].to_i
       value = BigDecimal.new(data[2])
-      batch << Canyon.new(chrom: chr, loc: loc, value: value)
+      batch << Genome.new(chrom: chr, loc: loc, value: value)
       if batch.length > 500_000
-        Canyon.import batch
+        Genome.import batch
         batch = Array.new
       end
       bar.increment
     end
     if !batch.empty?
-      Canyon.import batch
+      Genome.import batch
     end
     bar.finish
   end
