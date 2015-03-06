@@ -1,7 +1,26 @@
 namespace :test do
   desc "Import File Into DB"
   task :import_file, [:filepath] => :environment do |t, args|
-
+    file_path = args.filepath ? args.filepath : "test.data"
+    pp nline = `wc -l #{file_path}`.match(/^\d*/)[0].to_i
+    bar = ProgressBar.create format: "%a %e %P% Processed: %c from %C", 
+                             total: nline
+    batch = Array.new
+    File.open(file_path,"r").each_line do |line|
+      data = line.split(/\t/)
+      chr = data[0].to_i
+      loc = data[1].to_i
+      value = BigDecimal.new(data[2])
+      batch << Canyon.new(chrom: chr, loc: loc, value: value)
+      if batch.length > 10000
+        Canyon.import batch
+        batch = Array.new
+      end
+      bar.increment
+    end
+    if !batch.empty?
+      Canyon.import batch
+    end
   end
 
   desc "Write a Random Big Data File"
