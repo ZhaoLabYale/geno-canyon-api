@@ -1,4 +1,4 @@
-namespace :test do
+namespace :data do
   desc "Import File Into DB"
   task :import_file, [:filepath] => :environment do |t, args|
     file_path = args.filepath ? args.filepath : "test.data"
