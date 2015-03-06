@@ -12,7 +12,7 @@ namespace :data do
       loc = data[1].to_i
       value = BigDecimal.new(data[2])
       batch << Canyon.new(chrom: chr, loc: loc, value: value)
-      if batch.length > 10000
+      if batch.length > 500_000
         Canyon.import batch
         batch = Array.new
       end
