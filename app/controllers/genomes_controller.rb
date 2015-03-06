@@ -1,5 +1,5 @@
 class GenomesController < ApplicationController
-  def show
+  def query
     chr = params["chrom"]
     locs = params["locs"]
     candidates = Genome.where(chrom: chr)
