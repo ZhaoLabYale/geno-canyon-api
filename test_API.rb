@@ -16,6 +16,7 @@ end
 
 if `wc -l tmp/temp_result`.match /^#{n}/
   puts "Success"
+  `rm tmp/temp_result`
 else
   puts "Error"
   puts res.code
