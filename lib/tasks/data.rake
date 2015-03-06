@@ -1,6 +1,6 @@
 namespace :data do
   desc "Import File Into DB, slow"
-  task :import_file, [:filepath] => :environment do |t, args|
+  task :import_file_slow, [:filepath] => :environment do |t, args|
     file_path = args.filepath ? args.filepath : "test.data"
     nline = `wc -l #{file_path}`.match(/^\d*/)[0].to_i
     bar = ProgressBar.create format: "%a %e %P% Processed: %c from %C", 
@@ -22,6 +22,17 @@ namespace :data do
       Genome.import batch
     end
     bar.finish
+  end
+
+  desc "Import File Into DB"
+  task :import_file, [:filepath] => :environment do |t, args|
+    if !args.filepath
+      puts "Please specify file to import"
+    else
+      file_path = Rails.root.join(args.filepath)
+      ActiveRecord::Base.connection.execute "LOAD DATA INFILE " + 
+                "\"#{file_path}\" " + "INTO TABLE genomes (chrom, loc, value);"
+    end
   end
 
   desc "Write a Random Big Data File"
