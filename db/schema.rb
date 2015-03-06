@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150306004934) do
+ActiveRecord::Schema.define(version: 20150306005240) do
 
   create_table "canyons", force: :cascade do |t|
     t.integer "chrom", limit: 1
@@ -20,5 +20,6 @@ ActiveRecord::Schema.define(version: 20150306004934) do
   end
 
   add_index "canyons", ["chrom"], name: "index_canyons_on_chrom", using: :btree
+  add_index "canyons", ["loc"], name: "index_canyons_on_loc", using: :btree
 
 end
