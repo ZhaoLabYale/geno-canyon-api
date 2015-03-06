@@ -1,5 +1,5 @@
 namespace :data do
-  desc "Import File Into DB"
+  desc "Import File Into DB, slow"
   task :import_file, [:filepath] => :environment do |t, args|
     file_path = args.filepath ? args.filepath : "test.data"
     nline = `wc -l #{file_path}`.match(/^\d*/)[0].to_i
