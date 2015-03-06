@@ -12,6 +12,7 @@ else
                            total: nline, output: STDERR
   f1 = File.open(path, "r").each_line do |line|
     print "#{chrom}\t#{start}\t#{line}"
+    start += 1
     bar.increment
   end
   bar.finish
