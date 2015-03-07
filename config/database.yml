@@ -51,4 +51,4 @@ production:
   <<: *default
   database: genome-canyon_production
   username: genome-canyon
-  password: <%= ENV['GENOME-CANYON_DATABASE_PASSWORD'] %>
+  password: <%= ENV['GENOME_CANYON_DATABASE_PASSWORD'] %>

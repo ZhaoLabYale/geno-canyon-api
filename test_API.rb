@@ -20,6 +20,6 @@ if `wc -l tmp/temp_result`.match /^#{n}/
 else
   puts "Error"
   puts res.code
-  puts res.body
+  #puts res.body
 end
 
