@@ -12,7 +12,8 @@ class GenomesController < ApplicationController
       locs.each_slice(100_000) do |slice|
         result += candidates.where(loc: slice)
       end
-      result.sort_by!(&:loc).map!(&:value)
+      result.sort_by!(&:loc).uniq!(&:loc)
+      result.map!(&:value)
       render json: result
     end
   end
