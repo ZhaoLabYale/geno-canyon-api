@@ -12,3 +12,5 @@
 !/log/.keep
 /tmp
 test.data
+.env
+config/database.yml
