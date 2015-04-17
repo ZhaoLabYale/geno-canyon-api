@@ -1,4 +1,4 @@
-##A Web API for [GenoCanyon](http://genocanyon.med.yale.edu:7772/)
+##A Web API for [GenoCanyon](http://genocanyon.med.yale.edu)
 
 ###Querying Data
 
